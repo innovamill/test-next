@@ -1,4 +1,4 @@
-import { AtomIcon } from "lucide-react";
+import { GemIcon } from "lucide-react";
 import Link from "next/link";
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
@@ -21,7 +21,7 @@ export function AppSidebar() {
             <SidebarMenuButton asChild size="lg">
               <Link href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-md">
-                  <AtomIcon className="h-5 w-5" />
+                  <GemIcon className="h-5 w-5" />
                 </div>
                 <div className="ml-1 grid flex-1 text-left text-xl">
                   <span className="mb-0.5 truncate leading-none font-semibold">
