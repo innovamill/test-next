@@ -1,7 +1,7 @@
 import { GemIcon } from "lucide-react";
 import Link from "next/link";
 import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
+import { NavUser } from "@/components/nav-user-server";
 import {
   Sidebar,
   SidebarContent,

@@ -17,20 +17,20 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function NavUser() {
+interface NavUserClientProps {
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+  onLogout: () => Promise<void>;
+}
+
+export function NavUserClient({ user, onLogout }: NavUserClientProps) {
   const { isMobile } = useSidebar();
   const { theme, setTheme } = useTheme();
 
-  const initials = "IF";
-  const authUser = {
-    firstName: "Ian",
-    lastName: "Fox",
-    email: "ian.fox@example.com",
-  } as const;
-
-  const logout = () => {
-    console.log("logout");
-  };
+  const initials = `${user.firstName[0]}${user.lastName[0]}`;
 
   return (
     <SidebarMenu>
@@ -45,9 +45,9 @@ export function NavUser() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">
-                {authUser?.firstName} {authUser?.lastName}
+                {user.firstName} {user.lastName}
               </span>
-              <span className="truncate text-xs">{authUser?.email}</span>
+              <span className="truncate text-xs">{user.email}</span>
             </div>
             <ChevronsUpDown className="ml-auto size-4" />
           </SidebarMenuButton>
@@ -67,9 +67,9 @@ export function NavUser() {
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">
-                  {authUser?.firstName} {authUser?.lastName}
+                  {user.firstName} {user.lastName}
                 </span>
-                <span className="truncate text-xs">{authUser?.email}</span>
+                <span className="truncate text-xs">{user.email}</span>
               </div>
             </div>
           </DropdownMenuLabel>
@@ -98,7 +98,7 @@ export function NavUser() {
             {theme === "system" && <span className="ml-2">✔</span>}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={logout}>
+          <DropdownMenuItem onClick={onLogout}>
             <LogOut />
             Log out
           </DropdownMenuItem>

@@ -6,9 +6,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Cognito({
       authorization: {
         params: {
-          scope: "openid email phone",
+          scope: "openid email phone profile",
         },
+      },
+      profile(profile) {
+        return profile;
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.given_name = user.given_name;
+        token.family_name = user.family_name;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.given_name = token.given_name as string;
+        session.user.family_name = token.family_name as string;
+      }
+      return session;
+    },
+  },
 });
