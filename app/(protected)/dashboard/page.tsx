@@ -15,7 +15,7 @@ export default function DashboardPage() {
               <p className="text-sm font-medium text-muted-foreground">
                 Total Sites
               </p>
-              <p className="text-2xl font-bold">12</p>
+              <p className="text-2xl font-bold">13</p>
             </div>
             <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
               <span className="text-blue-600 text-sm font-semibold">S</span>
