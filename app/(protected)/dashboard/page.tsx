@@ -1,3 +1,5 @@
+import SignIn from "@/components/sign-in";
+
 export default function DashboardPage() {
   return (
     <div className="p-6">
@@ -126,6 +128,10 @@ export default function DashboardPage() {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <SignIn />
       </div>
     </div>
   );
