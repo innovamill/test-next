@@ -1,0 +1,24 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - curl -fsSL https://bun.sh/install | bash
+        - export PATH="$HOME/.bun/bin:$PATH"
+        - bun install
+    build:
+      commands:
+        - env | grep -e AUTH_SECRET >> .env.production
+        - env | grep -e AUTH_COGNITO_ID >> .env.production
+        - env | grep -e AUTH_COGNITO_SECRET >> .env.production
+        - env | grep -e AUTH_COGNITO_ISSUER >> .env.production
+        - env | grep -e AUTH_COGNITO_DOMAIN >> .env.production
+        - bun run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - .next/cache/**/*
+      - node_modules/**/*
