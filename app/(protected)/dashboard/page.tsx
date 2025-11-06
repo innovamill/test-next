@@ -1,9 +1,4 @@
-import { auth } from "@/auth";
-import SignIn from "@/components/sign-in";
-
 export default async function DashboardPage() {
-  const session = await auth();
-
   return (
     <div className="p-6">
       <div className="mb-6">
@@ -131,14 +126,6 @@ export default async function DashboardPage() {
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="mt-8">
-        <SignIn />
-      </div>
-
-      <div>
-        <pre>{JSON.stringify(session ?? {}, null, 2)}</pre>
       </div>
     </div>
   );
